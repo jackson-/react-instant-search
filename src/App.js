@@ -8,15 +8,18 @@ class App extends Component {
     var tableData = [
       {
           name:'Paul Shan',
-          roll: '001'
+          roll: '001',
+          tags:['sports', 'music', 'cooking']
       },
       {
           name:'John Doe',
-          roll: '002'
+          roll: '002',
+          tags:['sports', 'design', 'science']
       },
       {
           name:'Sachin Tendulkar',
-          roll: '003'
+          roll: '003',
+          tags:['music', 'science']
       }];
 
     return (

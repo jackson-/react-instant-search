@@ -4,18 +4,29 @@ export default class SearchBox extends Component {
 
 	constructor(props){
 		super(props);
-		this._doSearch = this._doSearch.bind(this);
+		this._handleChange = this._handleChange.bind(this);
+		this._handleSubmit = this._handleSubmit.bind(this);
 	}
 	
-	_doSearch(){
-		console.log("SEARCH", this.refs.searchInput, this.props)
+	_handleChange(e){
+		console.log("CHNAGE", e.keyCode)
 		let query=this.refs.searchInput.value;
-		this.props.doSearch(query);
+		this.props.updateInput(query);
+	}
+
+	_handleSubmit(e){
+		console.log("SUBMIT", e.keyCode)
+		let query=this.refs.searchInput.value;
+		if(e.keyCode === 13){
+			this.props.doSearch(query.trim());
+		} else{
+			return;
+		}
 	}
 
 	render(){
 		return(
-			<input type="text" ref="searchInput" placeholder="Search Name" value={this.props.query} onChange={this._doSearch}/>
+			<input type="text" ref="searchInput" placeholder="Search Name" value={this.props.query} onChange={this._handleChange} onKeyUp={this._handleSubmit}/>
 		);
 	}
 }
